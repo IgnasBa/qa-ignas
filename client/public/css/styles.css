@@ -1,0 +1,62 @@
+h1{
+    color: #3c4146;
+    text-align: center;
+    margin: 50px
+}
+h2 {
+    color: #3c4146;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+h3 {
+    color: #3c4146;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+h4 {
+    color: #3c4146;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+body {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+ol {
+    padding-left: 0;
+}
+
+.ratingsDiv{
+    border: 2px #3c4146 solid;
+    width: 50px;
+
+}
+.ratingsDiv p{
+    margin: 0;
+    width: 100%;
+    text-align: center;
+
+}
+
+.ratingDiv p{
+    font-size: 30px;
+}
+
+.answerDiv{
+    display: flex;
+}
+
+.inline{
+    margin: 20px;
+    min-width: 80px;
+}
+
+.inline p{
+    margin: 0;
+}
+
+.ratingBtn{
+    padding: 6px 10px;
+}
