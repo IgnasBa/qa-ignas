@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 
 /**** Configuration ****/
 const app = express();
-const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost/questions'; 
+const MONGO_URL = process.env.MONGO_URL || 'mongodb+srv://dbUser:asdf1234@cluster0.mkkz9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'; 
 
 async function createServer() {
   // Connect db

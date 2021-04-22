@@ -89,7 +89,6 @@ function App() {
     const postData = async () => {
       //const url = "http://localhost:8081/api/cooking";
       const url = `${API_URL}/questions/answer/${id}/downvote/${answerid}`;
-
       const response = await fetch(url, {
         method: 'PUT',
         headers: {
