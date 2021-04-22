@@ -4,7 +4,7 @@ module.exports = (questionDB) => {
 
   /**** Routes ****/
   router.get('/', async (req, res) => {
-    const questions = await questionDB.getQuestions(); 
+    const questions = await questionDB.getQuestions();
     res.json(questions);
   });
 
@@ -21,23 +21,23 @@ module.exports = (questionDB) => {
   });
 
   router.put('/answer/:id', async (req, res) => {
- await questionDB.createAnswer(req.params.id, req.body.answer)
-    res.json(req.params);
-       }
-       
-      );
+      await questionDB.createAnswer(req.params.id, req.body.answer)
+      res.json(req.params);
+    }
 
-      router.put('/answer/:id/upvote/:answerid', async (req, res) => {
-        await questionDB.upvote(req.params.id, req.params.answerid)
-              }
-              
-             );
-             router.put('/answer/:id/downvote/:answerid', async (req, res) => {
-              await questionDB.downvote(req.params.id, req.params.answerid)
-                    }
-                    
-                   );
-       
+  );
+
+  router.put('/answer/:id/upvote/:answerid', async (req, res) => {
+      await questionDB.upvote(req.params.id, req.params.answerid)
+    }
+
+  );
+  router.put('/answer/:id/downvote/:answerid', async (req, res) => {
+      await questionDB.downvote(req.params.id, req.params.answerid)
+    }
+
+  );
+
 
 
 

@@ -2,8 +2,10 @@ module.exports = (mongoose) => {
   const questionSchema = new mongoose.Schema({
     title: String,
     text: String,
-    answers: [{answer: String,
-               rating: Number}]
+    answers: [{
+      answer: String,
+      rating: Number
+    }]
   });
 
   const questionModel = mongoose.model('question', questionSchema);
@@ -28,39 +30,63 @@ module.exports = (mongoose) => {
   }
 
   async function createQuestion(title, text) {
-    let question = new questionModel({title: title, text: text});
+    let question = new questionModel({
+      title: title,
+      text: text
+    });
     return question.save();
   }
 
   async function createAnswer(id, answerNew) {
     try {
-      return await questionModel.findByIdAndUpdate(id, {$push: {answers: {answer: answerNew, rating: 0}}})
+      return await questionModel.findByIdAndUpdate(id, {
+        $push: {
+          answers: {
+            answer: answerNew,
+            rating: 0
+          }
+        }
+      })
     } catch (error) {
       console.error("getQuestion:", error.message);
       return {};
-      
+
     }
-          
+
   }
   async function upvote(id, answerid) {
     try {
-      return await questionModel.findOneAndUpdate({'_id': id, 'answers._id': answerid}, {$inc: {'answers.$.rating': 1}})
+      return await questionModel.findOneAndUpdate({
+        '_id': id,
+        'answers._id': answerid
+      }, {
+        $inc: {
+          'answers.$.rating': 1
+        }
+      })
     } catch (error) {
       console.error("getQuestion:", error.message);
       return {};
-      
+
     }
-          
+
   }
   async function downvote(id, answerid) {
     try {
-      return await questionModel.findOneAndUpdate({'_id': id, 'answers._id': answerid}, {$inc: {'answers.$.rating': -1}})
+      return await questionModel.findOneAndUpdate({
+        '_id': id,
+        'answers._id': answerid
+      }, {
+        $inc: {
+          'answers.$.rating': -1
+        }
+      })
     } catch (error) {
       console.error("getQuestion:", error.message);
       return {};
-      
+
     }
-          
+
   }
 
   async function bootstrap(count = 12) {
@@ -70,7 +96,14 @@ module.exports = (mongoose) => {
     if (l === 0) {
       let promises = [];
       for (let i = 0; i < count; i++) {
-        let newQuestion = new questionModel({title: `Question number ${i}`,text: 'What is the question number?', answers: {answer: 'I am not exactly sure, if I would have to guess it would be 11 or 13 because why not afterall?', rating: 0}});
+        let newQuestion = new questionModel({
+          title: `Question number ${i}`,
+          text: 'What is the question number?',
+          answers: {
+            answer: 'I am not exactly sure, if I would have to guess it would be 11 or 13 because why not afterall?',
+            rating: 0
+          }
+        });
         promises.push(newQuestion.save());
       }
       return Promise.all(promises);
